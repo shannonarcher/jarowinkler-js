@@ -1,5 +1,6 @@
 #Jaro-Winkler Distance
-From Wikipedia[1](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
+**[From Wikipedia](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)**
+
 The Jaro–Winkler distance (Winkler, 1990) is a measure of similarity between two strings. 
 It is a variant of the Jaro distance metric (Jaro, 1989, 1995), a type of string edit distance, 
 and was developed in the area of record linkage (duplicate detection) (Winkler, 1990). 
