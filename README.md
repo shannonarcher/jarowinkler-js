@@ -1,5 +1,5 @@
 #Jaro-Winkler Distance
-###### From Wikipedia[1]
+From Wikipedia[1](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
 The Jaro–Winkler distance (Winkler, 1990) is a measure of similarity between two strings. 
 It is a variant of the Jaro distance metric (Jaro, 1989, 1995), a type of string edit distance, 
 and was developed in the area of record linkage (duplicate detection) (Winkler, 1990). 
@@ -18,7 +18,9 @@ console.log("Distance:", distance);
 Returns a value between 0 and 1 where 0 is no similarity and 1 is an exact match.
 
 ##Tests
-Using the values found in the paper by Jaro-Winkler[1] and the wikipedia page examples, a script to unit test the matching, transposition and distance formula's can be found under test/JaroWinklerTest.js. Run using the following 
+Using the values found in the paper by Jaro-Winkler[1] and the wikipedia page examples, a 
+script to unit test the matching, transposition and distance formula's can be found in 
+test/JaroWinklerTest.js. It will output the following:
 
 ```
 > node test/JaroWinklerTest.js
@@ -64,8 +66,10 @@ dwayne PASSED expected 0.84 actual 0.8400
 Passed: 19
 Failed: 0
 ```
-**Note:** The values used to test the implementation of this formula from the paper have been unadjusted.
+**Note:** The values used to test the implementation of this formula from the paper 
+have been adjusted to be inline with the formula described by the paper without use 
+of an adjustment table.
 
 ##Source
-[1] http://www.amstat.org/sections/srms/Proceedings/papers/1990_056.pdf 
-[2] https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance 
+[[1] String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage](http://www.amstat.org/sections/srms/Proceedings/papers/1990_056.pdf) 
+[[2] Wikipedia](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) 
