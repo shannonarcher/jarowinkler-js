@@ -114,7 +114,8 @@ var JaroWinkler = (function () {
 	};
 
 	/**
-	 *
+	 * Counts the number of common characters at the beginning
+	 * of each word up to a maximum of 4
 	 * @param a String to compare
 	 * @param b String to compare
 	 */
