@@ -1,5 +1,6 @@
 // dirty include of jarowinkler
 var fs = require('fs');
+var colors = require('colors');
 eval(fs.readFileSync('JaroWinkler.js')+'');
 
 // unit tests
@@ -26,8 +27,13 @@ for (var i = 0; i < pairs.length; i++)
 	if (result == pairs[i][2]) output += "PASSED";
 	else output += "FAILED, expected " + pairs[i][2] + " actual " + result;
 
-	console.log(output);
+	if (output.indexOf("PASSED"))
+		console.log(output.green);
+	else
+		console.log(output.red);
 }
+
+console.log();
 
 // transpositions
 for (var i = 0; i < pairs.length; i++) 
@@ -44,11 +50,14 @@ for (var i = 0; i < pairs.length; i++)
 	if (result == pairs[i][3]) output += "PASSED";
 	else output += "FAILED, expected " + pairs[i][3] + " actual " + result;
 
-	console.log(output);
+	if (output.indexOf("PASSED") > -1)
+		console.log(output.green);
+	else
+		console.log(output.red);
 }
 
 // values from paper
-console.log("\n\n");
+console.log();
 
 var values = [
 	["archer", "archer", 1],
@@ -56,20 +65,20 @@ var values = [
 	["cunningham", "cunnigham", .9833],
 	["nichleson", "nichulson", .9630],
 	["massey", "massie", .9444],
-	["abroms", "abrams", .9333],
+	["abroms", "abrams", .9222],
 	["galloway", "calloway", .9167],
 	["lampley", "campley", .9048],
-	["dixon", "dickson", .8533],
-	["frederick", "fredric", .9815],
+	["dixon", "dicksonx", .8133],
+	["frederick", "fredric", .9630],
 	["michele", "michelle", .9792],
 	["jesse", "jessie", .9722],
-	["martha", "marhta", .9667],
+	["martha", "marhta", .9611],
 	["jonathon", "jonathan", .9583],
-	["julies", "juluis", .9333],
-	["jeraldine", "geraldine", .9246],
-	["yvette", "yevett", .9111],
-	["tanya", "tonya", .8933],
-	["dwayne", "duane", .8578]
+	["julies", "juluis", .9222],
+	["jeraldine", "geraldine", .9259],
+	["yvette", "yevett", .9000],
+	["tanya", "tonya", .8800],
+	["dwayne", "duane", .8400]
 ];
 
 var passed = 0;
@@ -83,13 +92,16 @@ for (var i = 0; i < values.length; i++)
 		passed++;
 	}
 	else output += "FAILED";
-	output += " expected " + values[i][2] + " actual " + (Math.floor(result * 10000) / 10000);
+	output += " expected " + values[i][2] + " actual " + result.toFixed(4);
 
-	console.log(values[i][0] + "-" + values[i][1], output);
+	if (output.indexOf("PASSED") > -1)
+		console.log(values[i][0], output.green);
+	else
+		console.log(values[i][0], output.bgRed.white);
 }
-console.log("\n");
-console.log("Passed: " + passed);
-console.log("Failed: " + (values.length - passed));
+console.log();
+console.log("Passed:".green + " " + passed);
+console.log("Failed:".bgRed.white + " " + (values.length - passed));
 
 function CompareFloatWithDelta(a, b, delta)
 {

@@ -22,16 +22,14 @@ var JaroWinkler = (function () {
 		if (m > 0)
 		{
 			// calculate the jaro distance
-			var dj = (m / s1 + m / s2 + (m-t) / m) * 1000 / 3;
-
-			console.log(s1, s2, m, t, p, dj, m / s1, m / s2, (m-t) / m);
+			var dj = (m / s1 + m / s2 + (m-t) / m) / 3;
 
 			// return jaro if less than boost
-			if (dj < this.bt * 1000) 
+			if (dj < this.bt) 
 				return dj;
 
 			// transform to jaro winkler 
-			return (dj + (p * this.p * (1000 - dj))) / 1000;
+			return (dj + (p * this.p * (1 - dj)));
 		}
 		return 0;
 	};
