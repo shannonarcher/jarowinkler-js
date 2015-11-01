@@ -1,7 +1,9 @@
 var JaroWinkler = (function () {
 
 	var JaroWinkler = function () {
-
+		this.p = 0.1;
+		this.l = 4;
+		this.bt = 0.7;
 	};
 
 	/**
@@ -16,6 +18,22 @@ var JaroWinkler = (function () {
 			m = this._matching(a,b),
 			t = this._transpositions(a,b),
 			p = this._prefix(a,b);
+
+		if (m > 0)
+		{
+			// calculate the jaro distance
+			var dj = (m / s1 + m / s2 + (m-t) / m) * 1000 / 3;
+
+			console.log(s1, s2, m, t, p, dj, m / s1, m / s2, (m-t) / m);
+
+			// return jaro if less than boost
+			if (dj < this.bt * 1000) 
+				return dj;
+
+			// transform to jaro winkler 
+			return (dj + (p * this.p * (1000 - dj))) / 1000;
+		}
+		return 0;
 	};
 
 	/**
@@ -28,14 +46,20 @@ var JaroWinkler = (function () {
 			max = Math.max(a.length, b.length),
 			bound = Math.floor(Math.max(a.length, b.length) / 2) - 1;
 
+		var matched = [];
+
 		for (var i = 0; i < a.length; i++)
 		{
 			for (var j = Math.max(0, i-bound); 
-					j < Math.min(b.length, i+bound); 
+					j <= Math.min(b.length, i+bound); 
 					j++)
 			{
-				if (a[i] == b[j]) 
+				if (a[i] == b[j] && !matched[j]) 
+				{
+					matched[j] = true;
 					matches++;
+					break;
+				}
 			}
 		}
 
@@ -43,7 +67,9 @@ var JaroWinkler = (function () {
 	};
 
 	/**
-	 * Calculate the number of transpositions between the two words
+	 * Calculate the number of transpositions between the two words	 
+	 * @param a String to compare
+	 * @param b String to compare
 	 */
 	JaroWinkler.prototype._transpositions = function (a, b) {
 		var t = 0,
@@ -51,43 +77,59 @@ var JaroWinkler = (function () {
 			bound = Math.floor(Math.max(a.length, b.length) / 2) - 1;
 
 		var amatch = "", bmatch = "";
+		var matched = [];
 
 		// get order of string matches between each word
 		for (var i = 0; i < a.length; i++) 
 		{
-			for (var j = Math.max(0, i-bound); j < Math.min(b.length, i+bound); j++)
+			for (var j = Math.max(0, i-bound); j <= Math.min(b.length, i+bound); j++)
 			{
-				if (a[i] == b[j]) 
+				if (a[i] == b[j] && matched[j] == null) {
 					amatch += a[i];
+					matched[j] = true;
+					break;
+				}
 			}
 		}
 
+		matched = [];
 		for (var i = 0; i < b.length; i++)
 		{
-			for (var j = Math.max(0, i-bound); j < Math.min(a.length, i+bound); j++)
+			for (var j = Math.max(0, i-bound); j <= Math.min(a.length, i+bound); j++)
 			{
-				if (b[i] == a[j]) 
+				if (b[i] == a[j] && matched[j] == null) {
 					bmatch += b[i];
+					matched[j] = true;
+					break;
+				}
 			}
 		}
 
 		// get transpositions
 		for (var i = 0; i < amatch.length; i++)
 		{
-			if (amatch[i] != bmatch[i])
+			if (amatch[i] != bmatch[i]) 
 				t++;
 		}
 
-		return Math.floor(t / 2);
+		return t / 2;
 	};
 
 	/**
 	 *
+	 * @param a String to compare
+	 * @param b String to compare
 	 */
 	JaroWinkler.prototype._prefix = function (a, b) {
 		var p = 0;
 
-		return p;
+		for (p = 0; p < this.l; p++)
+		{
+			if (a[p] != b[p])
+				return p;
+		}
+
+		return ++p;
 	};
 
 	var jaroWinkler = new JaroWinkler();
