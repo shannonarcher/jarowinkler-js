@@ -110,7 +110,7 @@ var JaroWinkler = (function () {
 				t++;
 		}
 
-		return t / 2;
+		return Math.floor(t / 2);
 	};
 
 	/**
