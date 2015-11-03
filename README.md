@@ -73,4 +73,5 @@ of an adjustment table.
 
 ##Source
 [[1] String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage](http://www.amstat.org/sections/srms/Proceedings/papers/1990_056.pdf) 
+
 [[2] Wikipedia](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) 
