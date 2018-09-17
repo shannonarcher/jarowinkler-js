@@ -13,6 +13,10 @@ The score is normalized such that 0 equates to no similarity and 1 is an exact m
 var a = "Jaro", b = "Jarro";
 var distance = JaroWinkler.Distance(a, b);
 
+// OR
+import {Distance} from 'JaroWinkler';
+const distance = Distance(a, b);
+
 // Prints "Distance: 0.9533"
 console.log("Distance:", distance);
 ```
