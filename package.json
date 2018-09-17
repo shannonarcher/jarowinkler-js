@@ -1,0 +1,24 @@
+{
+  "name": "jarowinkler",
+  "version": "1.0.0",
+  "description": "**[From Wikipedia](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)**",
+  "main": "JaroWinkler.es6.js",
+  "scripts": {
+    "test": "node test/JaroWinklerTest.js",
+    "test:es": "node test/JaroWinklerTest.js --es6=true"
+  },
+  "dependencies": {
+    "colors": "^1.1.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shannonarcher/jarowinkler-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shannonarcher/jarowinkler-js/issues"
+  },
+  "homepage": "https://github.com/shannonarcher/jarowinkler-js#readme"
+}

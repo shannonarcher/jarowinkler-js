@@ -1,7 +1,14 @@
+// "not used", but mods string object 
+require('colors');
+
 // dirty include of jarowinkler
-var fs = require('fs');
-var colors = require('colors');
-const JaroWinkler = require('../JaroWinkler.es6');
+var es6 = process.argv[2] === '--es6=true';
+if (es6) {
+	var JaroWinkler = require('../JaroWinkler.es6');
+} else {
+	var fs = require('fs');
+	eval(fs.readFileSync('JaroWinkler.js')+'');
+}
 
 // unit tests
 // matching 

@@ -1,4 +1,4 @@
-#Jaro-Winkler Distance
+# Jaro-Winkler Distance
 **[From Wikipedia](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)**
 
 The Jaro–Winkler distance (Winkler, 1990) is a measure of similarity between two strings. 
@@ -8,7 +8,7 @@ The higher the Jaro–Winkler distance for two strings is, the more similar the 
 The Jaro–Winkler distance metric is designed and best suited for short strings such as person names. 
 The score is normalized such that 0 equates to no similarity and 1 is an exact match.
 
-##How to use?
+## How to use?
 ```Javascript
 var a = "Jaro", b = "Jarro";
 var distance = JaroWinkler.Distance(a, b);
@@ -18,13 +18,13 @@ console.log("Distance:", distance);
 ```
 Returns a value between 0 and 1 where 0 is no similarity and 1 is an exact match.
 
-##Tests
+## Tests
 Using the values found in the paper by Jaro-Winkler[1] and the wikipedia page examples, a 
 script to unit test the matching, transposition and distance formula's can be found in 
 test/JaroWinklerTest.js. It will output the following:
 
 ```
-> node test/JaroWinklerTest.js
+> npm run test
 
 MARTHA-MARHTA match: PASSED
 MARHTA-MARTHA match: PASSED
@@ -71,7 +71,14 @@ Failed: 0
 have been adjusted to be inline with the formula described by the paper without use 
 of an adjustment table.
 
-##Source
-[[1] String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage](http://www.amstat.org/sections/srms/Proceedings/papers/1990_056.pdf) 
+## Run Tests
+To run tests on the original es5 script, use:
+`npm test`
+
+To run tests on the new es6 script, use: 
+`npm run test:es`
+
+## Source
+[[1] String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage](https://files.eric.ed.gov/fulltext/ED325505.pdf) 
 
 [[2] Wikipedia](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) 
