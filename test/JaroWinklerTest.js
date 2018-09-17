@@ -1,7 +1,7 @@
 // dirty include of jarowinkler
 var fs = require('fs');
 var colors = require('colors');
-eval(fs.readFileSync('JaroWinkler.js')+'');
+const JaroWinkler = require('../JaroWinkler.es6');
 
 // unit tests
 // matching 
