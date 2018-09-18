@@ -10,6 +10,7 @@ The score is normalized such that 0 equates to no similarity and 1 is an exact m
 
 ## How to use?
 ```Javascript
+// es2015
 var a = "Jaro", b = "Jarro";
 var distance = JaroWinkler.Distance(a, b);
 
@@ -25,7 +26,7 @@ Returns a value between 0 and 1 where 0 is no similarity and 1 is an exact match
 ## Tests
 Using the values found in the paper by Jaro-Winkler[1] and the wikipedia page examples, a 
 script to unit test the matching, transposition and distance formula's can be found in 
-test/JaroWinklerTest.js. It will output the following:
+lib/JaroWinklerTest.js. It will output the following:
 
 ```
 > npm run test
@@ -75,12 +76,11 @@ Failed: 0
 have been adjusted to be inline with the formula described by the paper without use 
 of an adjustment table.
 
-## Run Tests
-To run tests on the original es5 script, use:
-`npm test`
+## Build 
 
-To run tests on the new es6 script, use: 
-`npm run test:es`
+```npm run build```
+
+Running this command will transpile the es6 files into es2015 in the dist folder.
 
 ## Source
 [[1] String Comparator Metrics and Enhanced Decision Rules in the Fellegi-Sunter Model of Record Linkage](https://files.eric.ed.gov/fulltext/ED325505.pdf) 
